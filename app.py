@@ -31,6 +31,7 @@ def read_tif_file(tif_file):
         return (lon_min, lat_min, lon_max, lat_max), tif_data
 
 app = dash.Dash(__name__)
+server = app.server
 
 app.layout = html.Div(
     style={'display': 'flex', 'height': '100vh', 'margin': 0, 'padding': 0},
