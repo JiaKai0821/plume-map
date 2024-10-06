@@ -49,9 +49,9 @@ app.layout = html.Div(
                     id='date-picker-range',
                     min_date_allowed='2022-08-10',
                     max_date_allowed='2024-09-02',
-                    initial_visible_month='2024-07-03',
-                    start_date='2024-05-25',
-                    end_date='2024-06-25'
+                    initial_visible_month='2022-08-010',
+                    start_date='2022-08-10',
+                    end_date='2022-08-31'
                 ),
                 html.Div(id='output-date-range', style={'fontSize': '20px', 'marginTop': '20px'})
             ]
