@@ -53,7 +53,11 @@ app.layout = html.Div(
                     start_date='2022-08-10',
                     end_date='2022-08-31'
                 ),
-                html.Div(id='output-date-range', style={'fontSize': '20px', 'marginTop': '20px'})
+                html.Div(id='output-date-range', style={'fontSize': '20px', 'marginTop': '20px'}),
+                html.P(
+                    "This tool allows you to visualize geospatial data based on the selected date range. "
+                    "Choose a range to explore corresponding data points on the map."
+                    "When the user hovers over a marker, it displays the DAAC scene name, the maximum plume concentration, and the UTC time of observation.",style={'fontSize': '20px', 'marginTop': '20px'})
             ]
         ),
 
@@ -130,7 +134,7 @@ def update_output(start_date, end_date):
 
                     hover_text = f"""
                     DAAC Scene Name: {daac_scene_name}<br>
-                    Max Plume Concentration: {max_concentration} ppm m<br>
+                    Max Plume Concentration: {max_concentration} ppm<br>
                     UTC Time Observed: {utc_time_observed}
                     """
                     hover_texts.append(hover_text)
@@ -145,7 +149,7 @@ def update_output(start_date, end_date):
                 marker=dict(
                     size=10,
                     color=concentrations,
-                    colorbar=dict(title="Concentration"),
+                    colorbar=dict(title="Concentration ppm"),
                     colorscale='Viridis',
                 ),
                 hoverinfo='text',
@@ -173,4 +177,3 @@ def update_output(start_date, end_date):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
