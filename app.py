@@ -116,7 +116,10 @@ def update_output(start_date, end_date):
             properties = feature['properties']
             geometry = feature['geometry']
             max_concentration = properties.get('Max Plume Concentration (ppm m)', None)
+            utc_time_observed = properties.get('UTC Time Observed', None)
+            daac_scene_name = properties.get('DAAC Scene Names', None)
             coordinates = geometry.get('coordinates', [])
+            
 
             for polygon in coordinates:
                 for coord in polygon:
@@ -125,7 +128,11 @@ def update_output(start_date, end_date):
                     lats.append(lat)
                     concentrations.append(max_concentration)
 
-                    hover_text = f"Max Plume Concentration: {max_concentration} ppm m"
+                    hover_text = f"""
+                    DAAC Scene Name: {daac_scene_name}<br>
+                    Max Plume Concentration: {max_concentration} ppm m<br>
+                    UTC Time Observed: {utc_time_observed}
+                    """
                     hover_texts.append(hover_text)
 
     # 生成图形
